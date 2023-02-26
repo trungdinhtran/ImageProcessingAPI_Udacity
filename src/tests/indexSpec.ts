@@ -1,7 +1,5 @@
 import supertest from 'supertest';
 import app from '../index';
-import { promises as fs } from 'fs';
-import FileUtils from '../common/fileUtils';
 
 const request = supertest(app);
 
