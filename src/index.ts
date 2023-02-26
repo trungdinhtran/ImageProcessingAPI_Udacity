@@ -8,6 +8,6 @@ const port = 3000;
 app.use(routes);
 
 app.listen(port, () => {
-    FileUtils.isThumbPathExist();
+    FileUtils.createDirThumnail();
     console.log(`Server started in http://localhost:${port}`);
 });
