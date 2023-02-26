@@ -41,10 +41,10 @@ export default class FileUtils {
     * @returns returns true if the file exist, otherwise
     */
      static isExistThumbnail = async(filename: any, width: number, height: number) : Promise<string | undefined> => {
+        let thumbnailPath = path.resolve(FileUtils.imagesThumbDir, `${filename}-${width}x${height}.jpeg`);
         try {
-            await fsPromises.access(path.resolve(FileUtils.imagesThumbDir, `${filename}-${width}x${height}.jpeg`));
-            console.log(" asdasdasd"+path.resolve( FileUtils.imagesThumbDir, `${filename}-${width}x${height}.jpeg`));
-            return path.resolve( FileUtils.imagesThumbDir, `${filename}-${width}x${height}.jpeg`);
+            await fsPromises.access(thumbnailPath);
+            return thumbnailPath;
         } catch {
             return undefined;
         }

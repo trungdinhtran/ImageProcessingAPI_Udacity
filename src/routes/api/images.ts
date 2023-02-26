@@ -7,15 +7,14 @@ const images = express.Router();
 images.get('/', async (request, response) => {
     let thumbnailFile;
     const filename =  request.query.filename;
-    const width = request.query.width;
-    const height = request.query.height;
+    const width = request.query.width as string;
+    const height = request.query.height as string;
 
     if(!Utils.isString(filename) || !Utils.isNumberGreaterThan1(width) || !Utils.isNumberGreaterThan1(height)){
         response.send(`Invalid param. Please valid input!!!`);
         return;
     }
-    thumbnailFile = await FileUtils.isExistThumbnail(filename, Number(width?.toString()), Number(height?.toString));
-    console.log(`Thumbnail file is exist: ${thumbnailFile}`);
+    thumbnailFile = await FileUtils.isExistThumbnail(filename, parseInt(width, 10), parseInt(height, 10));
     if(thumbnailFile){
         console.log(`Thumbnail file is exist`);
         response.sendFile(thumbnailFile);
@@ -26,7 +25,7 @@ images.get('/', async (request, response) => {
         response.send(`The file: ${filename} can not be found!!!`);
         return;
     }
-    thumbnailFile = await FileUtils.createThumbnailImage(filename, Number(height?.toString()), Number(width?.toString()));
+    thumbnailFile = await FileUtils.createThumbnailImage(filename, parseInt(width, 10), parseInt(height, 10));
     if(thumbnailFile){
         response.sendFile(thumbnailFile);
         return;
