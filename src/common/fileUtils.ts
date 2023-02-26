@@ -26,7 +26,7 @@ export default class FileUtils {
     * @param filename This is the filename parameter
     * @returns returns true if the file exist, otherwise
     */
-    static isExistFile = async(filename: any) : Promise<boolean> => {
+    static isExistFile = async(filename: string) : Promise<boolean> => {
         try {
             await fsPromises.access(path.resolve( FileUtils.imagesFullDir,`${filename}.jpg`));
             return true;
@@ -40,7 +40,7 @@ export default class FileUtils {
     * @param filename This is the filename parameter
     * @returns returns true if the file exist, otherwise
     */
-     static isExistThumbnail = async(filename: any, width: number, height: number) : Promise<string | undefined> => {
+     static isExistThumbnail = async(filename: string, width: number, height: number) : Promise<string | undefined> => {
         let thumbnailPath = path.resolve(FileUtils.imagesThumbDir, `${filename}-${width}x${height}.jpeg`);
         try {
             await fsPromises.access(thumbnailPath);
@@ -57,7 +57,7 @@ export default class FileUtils {
     * @param height This is the height parameter
     * @returns returns a full path of thumbnail if the thumbnail is created, otherwise
     */
-    static createThumbnailImage = async(filename: any , width: any, height: any) : Promise<string | null> =>{
+    static createThumbnailImage = async(filename: string , width: number, height: number) : Promise<string | null> =>{
 
         // full path of the image
         const imagePathFull = path.resolve( FileUtils.imagesFullDir,`${filename}.jpg`);

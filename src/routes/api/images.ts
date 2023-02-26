@@ -6,7 +6,7 @@ const images = express.Router();
 
 images.get('/', async (request, response) => {
     let thumbnailFile;
-    const filename =  request.query.filename;
+    const filename =  request.query.filename as string;
     const width = request.query.width as string;
     const height = request.query.height as string;
 
