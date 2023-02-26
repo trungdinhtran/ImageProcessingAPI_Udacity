@@ -1,6 +1,7 @@
 import { promises as fsPromises } from 'fs';
 import path from 'path';
 import sharp from 'sharp';
+import Utils from './Utils';
 
 export default class FileUtils {
     // full directory of the image
@@ -61,6 +62,9 @@ export default class FileUtils {
     */
     static createThumbnailImage = async (filename: string, width: number, height: number) : Promise<string | null> =>{
 
+        if (!Utils.isString(filename) || !Utils.isNumberGreaterThan1(width) || !Utils.isNumberGreaterThan1(height)) {
+            return null;
+        }
         // full path of the image
         const imagePathFull = path.resolve( FileUtils.imagesFullDir, `${filename}.jpg`);
         // full path of the thumbnail

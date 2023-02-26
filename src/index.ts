@@ -11,3 +11,5 @@ app.listen(port, () => {
   FileUtils.createDirThumnail();
   console.log(`Server started in http://localhost:${port}`);
 });
+
+export default app;
