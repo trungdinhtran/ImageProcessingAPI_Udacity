@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 import FileUtils from '../../common/fileUtils';
 import Utils from '../../common/Utils';
 
@@ -10,26 +10,26 @@ images.get('/', async (request, response) => {
     const width = request.query.width as string;
     const height = request.query.height as string;
 
-    if(!Utils.isString(filename) || !Utils.isNumberGreaterThan1(width) || !Utils.isNumberGreaterThan1(height)){
+    if (!Utils.isString(filename) || !Utils.isNumberGreaterThan1(width) || !Utils.isNumberGreaterThan1(height)) {
         response.send(`Invalid param. Please valid input!!!`);
         return;
     }
     thumbnailFile = await FileUtils.isExistThumbnail(filename, parseInt(width, 10), parseInt(height, 10));
-    if(thumbnailFile){
+    if (thumbnailFile) {
         console.log(`Thumbnail file is exist`);
         response.sendFile(thumbnailFile);
         return;
     }
 
-    if(!(await FileUtils.isExistFile(filename))){
+    if (!(await FileUtils.isExistFile(filename)))  {
         response.send(`The file: ${filename} can not be found!!!`);
         return;
     }
     thumbnailFile = await FileUtils.createThumbnailImage(filename, parseInt(width, 10), parseInt(height, 10));
-    if(thumbnailFile){
+    if (thumbnailFile) {
         response.sendFile(thumbnailFile);
         return;
-    }else{
+    } else {
         response.send(`Can not create thumbnail file`);
         return;
     }
