@@ -3,15 +3,15 @@ About the Project
 The project is a simple API. That give you a server can create the thumbnail image with existing image in server.
 
 ## Getting Started
-Clone the projec
+### Clone the project
 > https://github.com/trungdinhtran/ImageProcessingAPI_Udacity.git
-Go to the project directory
+### Go to the project directory
 > cd project-directory
-Install dependencies
+### Install dependencies
 > npm i or npm install
-Run a test with Jasmine
+### Run a test with Jasmine
 > npm run test
-Start a project
+### Start a project
 > npm run start
 ## How it work
 ### The server will return resize images with endpoint:
