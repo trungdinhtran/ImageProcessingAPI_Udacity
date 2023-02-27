@@ -10,7 +10,7 @@ images.get('/', async (request, response) => {
     const width = request.query.width as string;
     const height = request.query.height as string;
 
-    if (!Utils.isString(filename) || !Utils.isNumberGreaterThan1(width) || !Utils.isNumberGreaterThan1(height)) {
+    if (!Utils.isString(filename) || !Utils.isNumberGreaterThan1(parseInt(width, 10)) || !Utils.isNumberGreaterThan1(parseInt(height, 10))) {
         response.send(`Invalid param. Please valid input!!!`);
         return;
     }
