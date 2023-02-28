@@ -4,7 +4,7 @@ import Utils from '../../common/Utils';
 
 const images = express.Router();
 
-images.get('/', async (request, response) => {
+images.get('/', async (request: express.Request, response: express.Response) : Promise<void> => {
     let thumbnailFile;
     const filename =  request.query.filename as string;
     const width = request.query.width as string;

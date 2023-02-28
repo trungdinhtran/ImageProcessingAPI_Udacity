@@ -13,7 +13,7 @@ export default class FileUtils {
    * This is the isThumbPathExist function
    * Main feature of this function is check the directoty of thubnail is exist. If not, create the directoty
    */
-  static async createDirThumnail() {
+  static createDirThumnail = async (): Promise<void> => {
     try {
       await fsPromises.access(
         FileUtils.imagesFullDir,
@@ -24,7 +24,7 @@ export default class FileUtils {
     } catch {
       fsPromises.mkdir(FileUtils.imagesThumbDir, { recursive: true });
     }
-  }
+  };
 
   /**
    * This is the isExistFile function
